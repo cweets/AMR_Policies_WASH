@@ -9,8 +9,8 @@ world_data <- inner_join(world, AMR_Water_Monitor, by = join_by(region == Countr
 MonMap <- (ggplot(data = world_data, mapping = aes(x = long, y = lat, group = group)) + 
              coord_fixed(1.3) +
              geom_polygon(aes(fill = Status)) +
-             ggtitle("Water Contamination Monitoring") +
-             scale_fill_manual(values = wes_palette("Moonrise3")) +
+             ggtitle("Water Monitoring Regulations") +
+             scale_fill_manual(values = c("#EF8A62", "#ffffbf", "#91bfdb")) +
              labs(fill = "Status") +
              theme(
                legend.position = "none",
@@ -35,8 +35,8 @@ QualMap <- (
   ggplot(data = world_data, mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) +
   geom_polygon(aes(fill = Status)) +
-  ggtitle("Water Quality Legislation") +
-  scale_fill_manual(values = wes_palette("Moonrise3")) +
+  ggtitle("Water Quality Regulations") +
+  scale_fill_manual(values = c("#EF8A62", "#ffffbf", "#91bfdb")) +
   labs(fill = "Status") +
   theme(
     legend.position = "none",
@@ -62,7 +62,7 @@ PollMap <- (
               coord_fixed(1.3) +
               geom_polygon(aes(fill = Status)) +
               ggtitle("Water Pollutant Disposal Regulations") +
-              scale_fill_manual(values = wes_palette("Moonrise3")) +
+              scale_fill_manual(values =  c("#EF8A62", "#ffffbf", "#91bfdb")) +
               labs(fill = "Status") +
               theme(
                 legend.position = "none",
@@ -87,8 +87,8 @@ EffMap <- (
   ggplot(data = world_data, mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) +
   geom_polygon(aes(fill = Status)) +
-  ggtitle("Wastewater Effluent Disposal Regulation") +
-  scale_fill_manual(values = wes_palette("Moonrise3")) +
+  ggtitle("Wastewater Disposal Regulations") +
+  scale_fill_manual(values =  c("#EF8A62", "#ffffbf", "#91bfdb")) +
   labs(fill = "Status") +
   theme(
     legend.position = "none",
@@ -114,7 +114,7 @@ SewMap <- (
   coord_fixed(1.3) +
   geom_polygon(aes(fill = Status)) +
   ggtitle("Sewerage Regulations") +
-  scale_fill_manual(values = wes_palette("Moonrise3")) +
+  scale_fill_manual(values =  c("#EF8A62", "#ffffbf", "#91bfdb")) +
   labs(fill = "Status") +
   theme(
     legend.position = "none",
@@ -140,7 +140,7 @@ MedMap <- (
   coord_fixed(1.3) +
   geom_polygon(aes(fill = Status)) +
   ggtitle("Medical Waste Disposal Regulations") +
-  scale_fill_manual(values = wes_palette("Moonrise3")) +
+  scale_fill_manual(values =  c("#EF8A62", "#ffffbf", "#91bfdb")) +
   labs(fill = "Status") +
   theme(
     legend.position = "none",
@@ -159,7 +159,7 @@ library(patchwork)
 #Put all of the Maps into the patchwork plot
 
 MapsFigure <- (
-  MonMap + QualMap + PollMap + EffMap + SewMap + MedMap + plot_layout(nrow = 3, byrow = FALSE))
+  QualMap + MonMap + PollMap + EffMap + SewMap + MedMap + plot_layout(nrow = 3, byrow = FALSE))
 
 print(MapsFigure)
 
